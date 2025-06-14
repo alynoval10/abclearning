@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:gravity="center_horizontal"
+    android:padding="24dp">
+
+    <!-- Bagian Tengah yang fleksibel -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical">
+
+        <TextView
+            android:id="@+id/tvAppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ABC Learning"
+            android:textSize="32sp"
+            android:textColor="#FF4081"
+            android:fontFamily="@font/comic_sans"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btnBelajarHuruf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/button_child"
+            android:drawableLeft="@drawable/ic_abc"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/comic_sans"
+            android:text="Belajar Huruf"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="16dp" />
+
+        <Button
+            android:id="@+id/btnBelajarAngka"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/button_child"
+            android:drawableLeft="@drawable/ic_number"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/comic_sans"
+            android:text="Belajar Angka"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="16dp" />
+
+        <Button
+            android:id="@+id/btnTentang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/button_child"
+            android:drawableLeft="@drawable/ic_info"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/comic_sans"
+            android:text="Tentang"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="16dp" />
+
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/button_child"
+            android:drawableLeft="@drawable/ic_exit"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/comic_sans"
+            android:text="Keluar"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="16dp" />
+    </LinearLayout>
+
+    <!-- Gambar Kartun di Bawah -->
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/bg_kartun"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
