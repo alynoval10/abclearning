@@ -1,5 +1,7 @@
 package com.example.abclearning;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,9 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import android.graphics.Color;
-import java.util.Random;
 
+import java.util.Random;
 
 public class HurufAdapter extends RecyclerView.Adapter<HurufAdapter.ViewHolder> {
 
@@ -19,24 +20,27 @@ public class HurufAdapter extends RecyclerView.Adapter<HurufAdapter.ViewHolder> 
             Color.MAGENTA, Color.YELLOW, Color.CYAN,
             Color.parseColor("#FF5722"), Color.parseColor("#9C27B0")
     };
+    private final Context context;
 
-    public HurufAdapter(String[] hurufArray) {
+    public HurufAdapter(Context context, String[] hurufArray) {
+        this.context = context;
         this.hurufArray = hurufArray;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(context)
                 .inflate(R.layout.item_huruf, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(hurufArray[position]);
+        String huruf = hurufArray[position];
+        holder.textView.setText(huruf);
 
-        // Ganti warna latar belakang secara acak
+        // Ganti warna background secara acak
         int randomColor = colors[new Random().nextInt(colors.length)];
         holder.textView.setBackgroundColor(randomColor);
     }

@@ -1,49 +1,48 @@
 package com.example.abclearning;
 
+import android.content.Context;
 import android.graphics.Color;
-import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Random;
 
-public class AngkaAdapter extends RecyclerView.Adapter<AngkaAdapter.AngkaViewHolder> {
+public class AngkaAdapter extends RecyclerView.Adapter<AngkaAdapter.ViewHolder> {
 
     private final String[] angkaArray;
     private final int[] colors = {
             Color.RED, Color.BLUE, Color.GREEN,
-            Color.MAGENTA, Color.CYAN, Color.YELLOW,
-            Color.parseColor("#FF5722"), // Orange
-            Color.parseColor("#9C27B0"), // Ungu
-            Color.parseColor("#4CAF50"), // Hijau terang
-            Color.parseColor("#03A9F4")  // Biru terang
+            Color.MAGENTA, Color.YELLOW, Color.CYAN,
+            Color.parseColor("#FF5722"), Color.parseColor("#9C27B0")
     };
+    private final Context context;
 
-    public AngkaAdapter(String[] angkaArray) {
+    public AngkaAdapter(Context context, String[] angkaArray) {
+        this.context = context;
         this.angkaArray = angkaArray;
     }
 
     @NonNull
     @Override
-    public AngkaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        TextView textView = new TextView(parent.getContext());
-        textView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-        ));
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextSize(72);
-        textView.setTextColor(Color.WHITE);
-        textView.setTypeface(null, android.graphics.Typeface.BOLD);
-        return new AngkaViewHolder(textView);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.item_angka, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AngkaViewHolder holder, int position) {
-        holder.textView.setText(angkaArray[position]);
-        holder.textView.setBackgroundColor(getRandomColor());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String angka = angkaArray[position];
+        holder.textView.setText(angka);
+
+        // Ganti warna background layar penuh, bukan hanya TextView
+        int randomColor = colors[new Random().nextInt(colors.length)];
+        holder.itemView.setBackgroundColor(randomColor); // 👈 ini penting
     }
 
     @Override
@@ -51,17 +50,12 @@ public class AngkaAdapter extends RecyclerView.Adapter<AngkaAdapter.AngkaViewHol
         return angkaArray.length;
     }
 
-    public static class AngkaViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
 
-        public AngkaViewHolder(@NonNull TextView itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView;
+            textView = itemView.findViewById(R.id.textItemAngka);
         }
-    }
-
-    private int getRandomColor() {
-        Random random = new Random();
-        return colors[random.nextInt(colors.length)];
     }
 }

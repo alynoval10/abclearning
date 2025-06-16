@@ -7,4 +7,9 @@
     android:textColor="#FFFFFF"
     android:fontFamily="@font/comic_sans"
     android:text="A"
+    android:textStyle="bold"
+    android:shadowColor="#000000"
+    android:shadowDx="2"
+    android:shadowDy="2"
+    android:shadowRadius="4"
     />
